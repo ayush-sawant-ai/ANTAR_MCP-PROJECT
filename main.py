@@ -225,4 +225,6 @@ if __name__ == "__main__":
 
     asyncio.run(main())
 
-    mcp.run()
+    
+    # Pass the token to FastMCP
+    mcp.run(transport="http", host="127.0.0.1", port=8000)
