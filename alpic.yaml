@@ -4,7 +4,7 @@ entrypoint: "uv run webcoder"
 port: 8000
 env:
   - name: PEXELS_API
-    value: "<your-pexels-key>"
+    value: secret:PEXELS_API
   - name: WEBCODER_WORKSPACE
     value: "/app/workspace"
 resources:
