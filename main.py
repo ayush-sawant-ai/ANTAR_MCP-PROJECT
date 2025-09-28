@@ -178,18 +178,12 @@ def save_page(context: Context, path: str, content: str) -> str:
     return f"Saved webpage to {p.relative_to(WORKSPACE)} ({len(content)} bytes)"
 
 # -------------------- Entrypoint --------------------
-
+def start():
+    """Run the MCP server under HTTP (for Alpic/Mistral)."""
+    mcp.run(transport="http", host="0.0.0.0", port=int(os.getenv("PORT", "8000")))
 
 if __name__ == "__main__":
-    # FastMCP will serve over stdio when launched under an MCP host,
-    # and fall back to a local debug server when run directly.
-    async def main():
-        try:
-            tools = await mcp.get_tools()
-            print("Registered tools:", tools)
-        except Exception as e:
-            print("Could not list tools:", e)
+    asyncio.run(mcp.get_tools())
+    start()
 
-    asyncio.run(main())
 
-    mcp.run()
