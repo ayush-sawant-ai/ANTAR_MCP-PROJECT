@@ -1,11 +1,21 @@
 [project]
 name = "webcoder-workspace"
 version = "0.1.0"
-description = "Add your description here"
+description = "MCP Server: Web UI scaffolder (webcoder)"
 readme = "README.md"
 requires-python = ">=3.10"
+
 dependencies = [
     "fastapi>=0.117.1",
     "mcp[cli]>=1.15.0",
     "uvicorn>=0.37.0",
+    "fastmcp>=0.1.0",
+    "python-dotenv>=1.0.1",
+    "requests>=2.32.3",
 ]
+
+[tool.uv]
+package = true
+
+[project.scripts]
+webcoder = "server:start"
