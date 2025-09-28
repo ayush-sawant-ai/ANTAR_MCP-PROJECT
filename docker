@@ -1,0 +1,16 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Install uv
+RUN pip install uv
+
+# Copy project
+COPY pyproject.toml .
+COPY server.py .
+
+# Install deps
+RUN uv pip install -r <(uv pip compile pyproject.toml --quiet)
+
+ENV PORT=8000
+CMD ["uv", "run", "webcoder"]

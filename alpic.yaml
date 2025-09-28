@@ -1,0 +1,15 @@
+name: webcoder
+runtime: python
+entrypoint: "uv run webcoder"
+port: 8000
+env:
+  - name: PEXELS_API
+    value: "<your-pexels-key>"
+  - name: WEBCODER_WORKSPACE
+    value: "/app/workspace"
+resources:
+  cpu: "1"
+  memory: "2Gi"
+deploy:
+  provider: mistral
+  region: asia-south1
